@@ -1,0 +1,22 @@
+# Render Blueprint — deploys the Garden Planner as a free web service.
+# In the Render dashboard: New + → Blueprint → connect this GitHub repo.
+# Render will prompt for the two Turso secrets (marked sync: false below).
+services:
+  - type: web
+    name: garden-planner
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      # Pin a modern Node LTS.
+      - key: NODE_VERSION
+        value: 22.11.0
+      # Ensure dev dependencies (Vite) install so the client can build.
+      - key: NPM_CONFIG_PRODUCTION
+        value: "false"
+      # Your Turso database — paste these in the Render dashboard when prompted.
+      - key: TURSO_DATABASE_URL
+        sync: false
+      - key: TURSO_AUTH_TOKEN
+        sync: false

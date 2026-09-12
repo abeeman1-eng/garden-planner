@@ -1,0 +1,25 @@
+{
+  "name": "garden-planner",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Personal garden planner (v1): grid layout, companion & rotation checks, seed inventory, harvest log. Single-user, self-hosted.",
+  "workspaces": [
+    "server",
+    "client"
+  ],
+  "scripts": {
+    "seed": "npm run seed --workspace server",
+    "dev": "concurrently -n server,client -c blue,green \"npm:dev:server\" \"npm:dev:client\"",
+    "dev:server": "npm run dev --workspace server",
+    "dev:client": "npm run dev --workspace client",
+    "build": "npm run build --workspace client",
+    "start": "npm run start --workspace server"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

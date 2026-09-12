@@ -1,0 +1,22 @@
+node_modules/
+dist/
+*.log
+
+# Local data & uploads (personal, not for source control)
+server/src/data/garden.db
+server/src/data/garden.db-*
+server/uploads/*
+!server/uploads/.gitkeep
+
+# Local self-hosting helpers (not needed for cloud deploy)
+scripts/cloudflared.exe
+scripts/tunnel-url.txt
+scripts/server.log
+scripts/tunnel.log
+scripts/tunnel.log.out
+
+# Generated artifacts
+garden-planner-source.pdf
+
+.env
+.DS_Store
