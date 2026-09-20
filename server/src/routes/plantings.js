@@ -106,6 +106,21 @@ router.post('/bulk-delete', asyncHandler(async (req, res) => {
   res.json({ deleted: ids.length });
 }));
 
+// Delete every planting of one crop (all history + any currently growing) and
+// their harvest entries. Used by the Inventory → Planted History list.
+router.delete('/by-plant/:plantKey', asyncHandler(async (req, res) => {
+  const plantKey = String(req.params.plantKey);
+  const rows = await all('SELECT id FROM plantings WHERE plant_key = ?', [plantKey]);
+  const ids = rows.map((r) => r.id);
+  if (ids.length === 0) return res.json({ deleted: 0 });
+  const ph = ids.map(() => '?').join(',');
+  await batch([
+    { sql: `DELETE FROM harvest_entries WHERE planting_id IN (${ph})`, args: ids },
+    { sql: `DELETE FROM plantings WHERE id IN (${ph})`, args: ids }
+  ]);
+  res.json({ deleted: ids.length });
+}));
+
 router.get('/:id', asyncHandler(async (req, res) => {
   const p = await plantingDetail(Number(req.params.id));
   if (!p) return res.status(404).json({ error: 'Planting not found' });

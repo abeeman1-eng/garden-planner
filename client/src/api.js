@@ -45,6 +45,7 @@ export const api = {
   movePlanting: (id, row, col) => json('PATCH', `/api/plantings/${id}/move`, { row, col }),
   removePlanting: (id, removedDate) => json('POST', `/api/plantings/${id}/remove`, { removedDate }),
   deletePlanting: (id) => request(`/api/plantings/${id}`, { method: 'DELETE' }),
+  deletePlantingsByPlant: (plantKey) => request(`/api/plantings/by-plant/${encodeURIComponent(plantKey)}`, { method: 'DELETE' }),
 
   // Harvests
   getHarvests: (filters = {}) => {

@@ -45,6 +45,7 @@ export default function HarvestsView() {
             No harvest entries yet. Open a planted cell in the Garden tab and use “Log a harvest”.
           </div>
         ) : (
+          <div className="table-wrap">
           <table>
             <thead>
               <tr><th>Date</th><th>Crop</th><th>Cell</th><th>Note</th><th>Photo</th><th></th></tr>
@@ -64,6 +65,7 @@ export default function HarvestsView() {
               ))}
             </tbody>
           </table>
+          </div>
         )}
       </div>
     </div>

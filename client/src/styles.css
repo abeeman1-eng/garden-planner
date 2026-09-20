@@ -157,6 +157,7 @@ nav.tabs button.active { background: #fff; color: var(--green-dark); font-weight
 .harvest-note img { border-radius: 6px; margin-top: 6px; display: block; max-height: 200px; }
 
 /* ---------- Tables / lists ---------- */
+.table-wrap { overflow-x: auto; }
 table { width: 100%; border-collapse: collapse; }
 th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--line); font-size: 14px; }
 th { font-size: 12px; text-transform: uppercase; letter-spacing: 0.4px; color: var(--muted); }

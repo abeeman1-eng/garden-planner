@@ -88,6 +88,7 @@ function OnHand() {
       {items.length === 0 ? (
         <div className="empty-state">No inventory yet. Add your seeds and starts above.</div>
       ) : (
+        <div className="table-wrap">
         <table>
           <thead>
             <tr><th>Name</th><th>Variety</th><th>Qty</th><th>Linked</th><th>Acquired</th><th>Expires</th><th>Notes</th><th></th></tr>
@@ -107,6 +108,7 @@ function OnHand() {
             ))}
           </tbody>
         </table>
+        </div>
       )}
     </>
   );
@@ -115,25 +117,41 @@ function OnHand() {
 function PlantedHistory() {
   const toast = useToast();
   const [rows, setRows] = useState([]);
-  useEffect(() => { api.getPlantedHistory().then(setRows).catch((e) => toast(e.message, 'bad')); }, [toast]);
+  const load = useCallback(async () => setRows(await api.getPlantedHistory()), []);
+  useEffect(() => { load().catch((e) => toast(e.message, 'bad')); }, [load, toast]);
+
+  async function del(r) {
+    const growing = r.currently_growing > 0
+      ? ` ${r.currently_growing} of these are currently growing and will be removed from the grid.`
+      : '';
+    if (!window.confirm(`Delete all ${r.times_planted} planting record(s) for ${r.plant_name}?${growing} This also deletes their harvest entries and cannot be undone.`)) return;
+    try {
+      const res = await api.deletePlantingsByPlant(r.plant_key);
+      toast(`Deleted ${res.deleted} record(s) for ${r.plant_name}.`, 'good');
+      load();
+    } catch (e) { toast(e.message, 'bad'); }
+  }
 
   if (rows.length === 0) return <div className="empty-state">Nothing planted yet. Plantings you make in the Garden tab show up here.</div>;
   return (
-    <table>
-      <thead>
-        <tr><th>Crop</th><th>Times planted</th><th>Currently growing</th><th>First planted</th><th>Last planted</th></tr>
-      </thead>
-      <tbody>
-        {rows.map((r) => (
-          <tr key={r.plant_key}>
-            <td><span className="tag"><span className="swatch" style={{ background: r.color }} />{r.plant_name}</span></td>
-            <td>{r.times_planted}</td>
-            <td>{r.currently_growing}</td>
-            <td className="small muted">{r.first_planted}</td>
-            <td className="small muted">{r.last_planted}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
+    <div className="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Crop</th><th>Times planted</th><th>Currently growing</th><th>First planted</th><th>Last planted</th><th></th></tr>
+        </thead>
+        <tbody>
+          {rows.map((r) => (
+            <tr key={r.plant_key}>
+              <td><span className="tag"><span className="swatch" style={{ background: r.color }} />{r.plant_name}</span></td>
+              <td>{r.times_planted}</td>
+              <td>{r.currently_growing}</td>
+              <td className="small muted">{r.first_planted}</td>
+              <td className="small muted">{r.last_planted}</td>
+              <td><button className="danger" onClick={() => del(r)}>Delete</button></td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
