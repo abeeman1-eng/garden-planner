@@ -62,6 +62,50 @@ router.post('/', asyncHandler(async (req, res) => {
   });
 }));
 
+// Bulk-plant one crop into many empty cells at once. Skips out-of-bounds cells,
+// cells already planted, and duplicates. Returns how many were planted/skipped.
+router.post('/bulk', asyncHandler(async (req, res) => {
+  const plantKey = String(req.body.plantKey || '');
+  const plantedDate = req.body.plantedDate || today();
+  const cells = Array.isArray(req.body.cells) ? req.body.cells : [];
+  if (!(await get('SELECT 1 FROM plants WHERE key = ?', [plantKey]))) {
+    return res.status(400).json({ error: 'Unknown plant' });
+  }
+  const g = await bounds();
+  const current = await all('SELECT row, col FROM plantings WHERE removed_date IS NULL');
+  const occupied = new Set(current.map((c) => `${c.row},${c.col}`));
+  const seen = new Set();
+  const writes = [];
+  let skipped = 0;
+  for (const cell of cells) {
+    const row = Number(cell.row), col = Number(cell.col);
+    const k = `${row},${col}`;
+    if (!Number.isInteger(row) || !Number.isInteger(col) || row < 0 || col < 0 || row >= g.rows || col >= g.cols) { skipped++; continue; }
+    if (occupied.has(k) || seen.has(k)) { skipped++; continue; }
+    seen.add(k);
+    writes.push({ sql: 'INSERT INTO plantings (row, col, plant_key, planted_date) VALUES (?, ?, ?, ?)', args: [row, col, plantKey, plantedDate] });
+  }
+  if (writes.length) await batch(writes);
+  res.json({ planted: writes.length, skipped });
+}));
+
+// Bulk-delete the current planting in many cells at once (hard delete, incl.
+// their harvest entries). Empty cells in the selection are ignored.
+router.post('/bulk-delete', asyncHandler(async (req, res) => {
+  const cells = Array.isArray(req.body.cells) ? req.body.cells : [];
+  if (cells.length === 0) return res.json({ deleted: 0 });
+  const wanted = new Set(cells.map((c) => `${Number(c.row)},${Number(c.col)}`));
+  const current = await all('SELECT id, row, col FROM plantings WHERE removed_date IS NULL');
+  const ids = current.filter((c) => wanted.has(`${c.row},${c.col}`)).map((c) => c.id);
+  if (ids.length === 0) return res.json({ deleted: 0 });
+  const ph = ids.map(() => '?').join(',');
+  await batch([
+    { sql: `DELETE FROM harvest_entries WHERE planting_id IN (${ph})`, args: ids },
+    { sql: `DELETE FROM plantings WHERE id IN (${ph})`, args: ids }
+  ]);
+  res.json({ deleted: ids.length });
+}));
+
 router.get('/:id', asyncHandler(async (req, res) => {
   const p = await plantingDetail(Number(req.params.id));
   if (!p) return res.status(404).json({ error: 'Planting not found' });

@@ -114,6 +114,23 @@ nav.tabs button.active { background: #fff; color: var(--green-dark); font-weight
 .cell.selected { outline: 3px solid var(--accent); outline-offset: -3px; }
 .cell .label { font-size: 10px; line-height: 1.1; text-align: center; text-shadow: 0 1px 1px rgba(0,0,0,0.35); word-break: break-word; }
 .cell .flag { position: absolute; top: 2px; right: 3px; font-size: 11px; }
+.cell.selectable { cursor: pointer; }
+.cell.multi-selected { outline: 3px solid var(--accent); outline-offset: -3px; }
+.cell .check {
+  position: absolute; top: 2px; left: 3px; font-size: 12px; font-weight: 700;
+  color: var(--accent); background: rgba(255,255,255,0.9); border-radius: 3px; line-height: 1; padding: 1px 2px;
+}
+.grid-scroll.select-mode { user-select: none; }
+.grid-scroll.select-mode .cell.planted { cursor: pointer; }
+
+.select-bar {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  background: var(--panel); border: 1px solid var(--line); border-radius: 10px;
+  box-shadow: var(--shadow); padding: 10px 14px; margin-bottom: 12px;
+}
+.select-bar .sep { width: 1px; height: 22px; background: var(--line); }
+.select-bar .hint { margin-left: auto; }
+
 .cell.conflict::after {
   content: ''; position: absolute; inset: 0; border-radius: 6px;
   box-shadow: inset 0 0 0 3px var(--bad); pointer-events: none;

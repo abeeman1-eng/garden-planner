@@ -40,6 +40,8 @@ export const api = {
 
   // Plantings
   plant: (data) => json('POST', '/api/plantings', data),
+  bulkPlant: (cells, plantKey, plantedDate) => json('POST', '/api/plantings/bulk', { cells, plantKey, plantedDate }),
+  bulkDelete: (cells) => json('POST', '/api/plantings/bulk-delete', { cells }),
   movePlanting: (id, row, col) => json('PATCH', `/api/plantings/${id}/move`, { row, col }),
   removePlanting: (id, removedDate) => json('POST', `/api/plantings/${id}/remove`, { removedDate }),
   deletePlanting: (id) => request(`/api/plantings/${id}`, { method: 'DELETE' }),
