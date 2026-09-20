@@ -29,7 +29,15 @@ export const FAMILY_ROTATION_YEARS = {
   poaceae: 2,
   lamiaceae: 2,
   rosaceae: 4,
-  malvaceae: 2
+  malvaceae: 2,
+  convolvulaceae: 3,
+  tropaeolaceae: 1,
+  boraginaceae: 1,
+  asparagaceae: 8,
+  polygonaceae: 8,
+  ericaceae: 8,
+  vitaceae: 8,
+  moraceae: 8
 };
 
 // Default starting grid size (spec 3.1).

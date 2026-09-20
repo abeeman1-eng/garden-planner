@@ -48,20 +48,20 @@ export default function GardenView() {
   const conflicts = garden.cells.filter((c) => c.companionConflicts?.length || c.rotationConflict).length;
 
   return (
-    <div className="garden-layout">
-      <PlantPicker plants={plants} armedKey={armedKey} onArm={setArmedKey} />
-
-      <div>
-        <GridToolbar garden={garden} onResized={loadGarden} planted={planted} conflicts={conflicts} />
-        <GardenGrid
-          garden={garden}
-          armedKey={armedKey}
-          onPlant={plant}
-          onMove={move}
-          onSelectCell={(row, col) => setSelected({ row, col })}
-          selectedCell={selectedCell}
-        />
+    <div>
+      <div className="plant-bar panel">
+        <PlantPicker plants={plants} armedKey={armedKey} onArm={setArmedKey} />
       </div>
+
+      <GridToolbar garden={garden} onResized={loadGarden} planted={planted} conflicts={conflicts} />
+      <GardenGrid
+        garden={garden}
+        armedKey={armedKey}
+        onPlant={plant}
+        onMove={move}
+        onSelectCell={(row, col) => setSelected({ row, col })}
+        selectedCell={selectedCell}
+      />
 
       {selectedCell && (
         <CellDrawer

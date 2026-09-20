@@ -65,4 +65,12 @@ router.put('/', asyncHandler(async (req, res) => {
   res.json(await getGarden());
 }));
 
+// Update the hardiness zone (e.g. after a ZIP lookup).
+router.put('/zone', asyncHandler(async (req, res) => {
+  const zone = String(req.body.zone || '').trim();
+  if (!zone || zone.length > 12) return res.status(400).json({ error: 'Invalid zone' });
+  await run('UPDATE garden SET zone = ? WHERE id = 1', [zone]);
+  res.json(await getGarden());
+}));
+
 export default router;

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ToastProvider } from './ToastContext.jsx';
+import ZoneControl from './components/ZoneControl.jsx';
 import GardenView from './views/GardenView.jsx';
 import HarvestsView from './views/HarvestsView.jsx';
 import InventoryView from './views/InventoryView.jsx';
@@ -17,7 +18,7 @@ export default function App() {
     <ToastProvider>
       <header className="app-header">
         <h1>Garden Planner</h1>
-        <span className="zone">USDA Zone 7b</span>
+        <ZoneControl />
         <nav className="tabs">
           {TABS.map((t) => (
             <button key={t.id} className={tab === t.id ? 'active' : ''} onClick={() => setTab(t.id)}>

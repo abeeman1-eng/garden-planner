@@ -77,5 +77,69 @@ export const PLANTS = [
   { key: 'strawberry', name: 'Strawberry', family: 'rosaceae', familyLabel: 'Rose family (Rosaceae)', category: 'fruit', color: '#e0506f', rotationYears: 4, sun: 'full', spacingInches: 12, plantWindow7b: 'Plant crowns early spring; perennial bed.' },
 
   // --- Malvaceae ---
-  { key: 'okra', name: 'Okra', family: 'malvaceae', familyLabel: 'Mallow family (Malvaceae)', category: 'vegetable', color: '#9fae4f', rotationYears: 2, sun: 'full', spacingInches: 12, plantWindow7b: 'Direct sow well after last frost; loves heat.' }
+  { key: 'okra', name: 'Okra', family: 'malvaceae', familyLabel: 'Mallow family (Malvaceae)', category: 'vegetable', color: '#9fae4f', rotationYears: 2, sun: 'full', spacingInches: 12, plantWindow7b: 'Direct sow well after last frost; loves heat.' },
+
+  // --- More Brassicas ---
+  { key: 'kohlrabi',      name: 'Kohlrabi',       family: 'brassicaceae', familyLabel: 'Brassicas (Brassicaceae)', category: 'vegetable', color: '#7fae8f', rotationYears: 4, sun: 'full', spacingInches: 6,  plantWindow7b: 'Spring & fall; quick cool-season crop.' },
+  { key: 'collards',      name: 'Collard Greens', family: 'brassicaceae', familyLabel: 'Brassicas (Brassicaceae)', category: 'vegetable', color: '#357a4f', rotationYears: 4, sun: 'full', spacingInches: 18, plantWindow7b: 'Very heat- and cold-tolerant; spring and fall.' },
+  { key: 'mustard-greens',name: 'Mustard Greens', family: 'brassicaceae', familyLabel: 'Brassicas (Brassicaceae)', category: 'vegetable', color: '#8fbf5f', rotationYears: 3, sun: 'full', spacingInches: 6,  plantWindow7b: 'Direct sow spring & fall; fast growing.' },
+  { key: 'bok-choy',      name: 'Bok Choy',       family: 'brassicaceae', familyLabel: 'Brassicas (Brassicaceae)', category: 'vegetable', color: '#9fce7f', rotationYears: 3, sun: 'partial', spacingInches: 6, plantWindow7b: 'Cool-season; bolts in heat. Spring & fall.' },
+  { key: 'arugula',       name: 'Arugula',        family: 'brassicaceae', familyLabel: 'Brassicas (Brassicaceae)', category: 'vegetable', color: '#6fae4f', rotationYears: 2, sun: 'partial', spacingInches: 4, plantWindow7b: 'Direct sow early spring & fall; fast, peppery.' },
+  { key: 'rutabaga',      name: 'Rutabaga',       family: 'brassicaceae', familyLabel: 'Brassicas (Brassicaceae)', category: 'vegetable', color: '#c89fb8', rotationYears: 3, sun: 'full', spacingInches: 6,  plantWindow7b: 'Direct sow midsummer for fall harvest.' },
+  { key: 'horseradish',   name: 'Horseradish',    family: 'brassicaceae', familyLabel: 'Brassicas (Brassicaceae)', category: 'vegetable', color: '#b8a890', rotationYears: 4, sun: 'full', spacingInches: 18, plantWindow7b: 'Plant root cuttings spring; perennial, spreads.' },
+
+  // --- More Umbellifers ---
+  { key: 'cilantro',  name: 'Cilantro',  family: 'apiaceae', familyLabel: 'Umbellifers (Apiaceae)', category: 'herb', color: '#5fae5f', rotationYears: 2, sun: 'partial', spacingInches: 4, plantWindow7b: 'Cool-season; direct sow spring & fall, bolts in heat.' },
+  { key: 'fennel',    name: 'Fennel',    family: 'apiaceae', familyLabel: 'Umbellifers (Apiaceae)', category: 'herb', color: '#a9c96f', rotationYears: 3, sun: 'full', spacingInches: 10, plantWindow7b: 'Direct sow spring; keep away from most vegetables.' },
+  { key: 'parsnip',   name: 'Parsnip',   family: 'apiaceae', familyLabel: 'Umbellifers (Apiaceae)', category: 'vegetable', color: '#e6dab0', rotationYears: 3, sun: 'full', spacingInches: 4, plantWindow7b: 'Direct sow spring; long season, sweetens after frost.' },
+
+  // --- More Alliums ---
+  { key: 'shallot', name: 'Shallot', family: 'amaryllidaceae', familyLabel: 'Alliums (Amaryllidaceae)', category: 'vegetable', color: '#c99fb0', rotationYears: 3, sun: 'full', spacingInches: 6, plantWindow7b: 'Plant sets early spring or fall.' },
+  { key: 'chives',  name: 'Chives',  family: 'amaryllidaceae', familyLabel: 'Alliums (Amaryllidaceae)', category: 'herb', color: '#b8a8d0', rotationYears: 2, sun: 'full', spacingInches: 8, plantWindow7b: 'Perennial in 7b; transplant spring.' },
+
+  // --- More Cucurbits ---
+  { key: 'watermelon',   name: 'Watermelon',   family: 'cucurbitaceae', familyLabel: 'Cucurbits (Cucurbitaceae)', category: 'fruit', color: '#4fae5f', rotationYears: 3, sun: 'full', spacingInches: 36, plantWindow7b: 'Direct sow well after last frost; needs heat & room.' },
+  { key: 'yellow-squash',name: 'Yellow Squash',family: 'cucurbitaceae', familyLabel: 'Cucurbits (Cucurbitaceae)', category: 'vegetable', color: '#e6c84f', rotationYears: 3, sun: 'full', spacingInches: 24, plantWindow7b: 'Direct sow after last frost; very productive.' },
+
+  // --- More Legumes ---
+  { key: 'lima-bean', name: 'Lima Bean',        family: 'fabaceae', familyLabel: 'Legumes (Fabaceae)', category: 'vegetable', color: '#9fbf6f', rotationYears: 3, sun: 'full', spacingInches: 6, plantWindow7b: 'Direct sow after last frost; loves heat.' },
+  { key: 'edamame',   name: 'Edamame (Soybean)',family: 'fabaceae', familyLabel: 'Legumes (Fabaceae)', category: 'vegetable', color: '#8fae4f', rotationYears: 3, sun: 'full', spacingInches: 4, plantWindow7b: 'Direct sow after last frost.' },
+  { key: 'peanut',    name: 'Peanut',           family: 'fabaceae', familyLabel: 'Legumes (Fabaceae)', category: 'vegetable', color: '#d9c9a0', rotationYears: 3, sun: 'full', spacingInches: 8, plantWindow7b: 'Direct sow after last frost; long warm season.' },
+
+  // --- More Solanaceae ---
+  { key: 'tomatillo', name: 'Tomatillo', family: 'solanaceae', familyLabel: 'Nightshades (Solanaceae)', category: 'vegetable', color: '#a9c94f', rotationYears: 3, sun: 'full', spacingInches: 24, plantWindow7b: 'Transplant after last frost; plant 2+ for pollination.' },
+  { key: 'ground-cherry', name: 'Ground Cherry', family: 'solanaceae', familyLabel: 'Nightshades (Solanaceae)', category: 'fruit', color: '#e0b84f', rotationYears: 3, sun: 'full', spacingInches: 24, plantWindow7b: 'Transplant after last frost; sweet husk fruit.' },
+
+  // --- More Asteraceae / greens ---
+  { key: 'endive',    name: 'Endive',    family: 'asteraceae', familyLabel: 'Aster family (Asteraceae)', category: 'vegetable', color: '#a9cf6f', rotationYears: 2, sun: 'partial', spacingInches: 10, plantWindow7b: 'Cool-season; spring & fall.' },
+  { key: 'radicchio', name: 'Radicchio', family: 'asteraceae', familyLabel: 'Aster family (Asteraceae)', category: 'vegetable', color: '#b0405f', rotationYears: 2, sun: 'partial', spacingInches: 8, plantWindow7b: 'Cool-season; best as a fall crop.' },
+  { key: 'artichoke', name: 'Artichoke', family: 'asteraceae', familyLabel: 'Aster family (Asteraceae)', category: 'vegetable', color: '#7f9f6f', rotationYears: 4, sun: 'full', spacingInches: 36, plantWindow7b: 'Transplant spring; can be grown as an annual in 7b.' },
+
+  // --- Chenopods ---
+  { key: 'kale-ornamental', name: 'Amaranth', family: 'amaranthaceae', familyLabel: 'Chenopods (Amaranthaceae)', category: 'vegetable', color: '#a63f7f', rotationYears: 2, sun: 'full', spacingInches: 10, plantWindow7b: 'Direct sow after last frost; heat-loving grain/green.' },
+
+  // --- Perennial vegetables ---
+  { key: 'asparagus', name: 'Asparagus', family: 'asparagaceae', familyLabel: 'Asparagus family (Asparagaceae)', category: 'vegetable', color: '#6fae7f', rotationYears: 8, sun: 'full', spacingInches: 18, plantWindow7b: 'Plant crowns early spring; permanent bed, harvest yr 3.' },
+  { key: 'rhubarb',   name: 'Rhubarb',   family: 'polygonaceae', familyLabel: 'Knotweed family (Polygonaceae)', category: 'vegetable', color: '#c94f5f', rotationYears: 8, sun: 'full', spacingInches: 36, plantWindow7b: 'Plant crowns spring; perennial. Stalks only (leaves toxic).' },
+  { key: 'sweet-potato', name: 'Sweet Potato', family: 'convolvulaceae', familyLabel: 'Morning-glory family (Convolvulaceae)', category: 'vegetable', color: '#c97f4f', rotationYears: 3, sun: 'full', spacingInches: 12, plantWindow7b: 'Plant slips after soil warms; loves heat.' },
+
+  // --- More herbs ---
+  { key: 'mint',     name: 'Mint',     family: 'lamiaceae', familyLabel: 'Mint family (Lamiaceae)', category: 'herb', color: '#4fae6f', rotationYears: 2, sun: 'partial', spacingInches: 12, plantWindow7b: 'Perennial; contain it — spreads aggressively.' },
+  { key: 'rosemary', name: 'Rosemary', family: 'lamiaceae', familyLabel: 'Mint family (Lamiaceae)', category: 'herb', color: '#6f9f7f', rotationYears: 2, sun: 'full', spacingInches: 24, plantWindow7b: 'Perennial in 7b; transplant spring.' },
+  { key: 'sage',     name: 'Sage',     family: 'lamiaceae', familyLabel: 'Mint family (Lamiaceae)', category: 'herb', color: '#8fae8f', rotationYears: 2, sun: 'full', spacingInches: 18, plantWindow7b: 'Perennial in 7b; transplant spring.' },
+  { key: 'lavender', name: 'Lavender', family: 'lamiaceae', familyLabel: 'Mint family (Lamiaceae)', category: 'herb', color: '#9f8fc9', rotationYears: 2, sun: 'full', spacingInches: 18, plantWindow7b: 'Perennial; needs well-drained soil and full sun.' },
+
+  // --- Berries & fruit ---
+  { key: 'blueberry',  name: 'Blueberry',  family: 'ericaceae', familyLabel: 'Heath family (Ericaceae)', category: 'fruit', color: '#4f6fae', rotationYears: 8, sun: 'full', spacingInches: 48, plantWindow7b: 'Plant bushes late winter; needs acidic soil.' },
+  { key: 'raspberry',  name: 'Raspberry',  family: 'rosaceae', familyLabel: 'Rose family (Rosaceae)', category: 'fruit', color: '#b0405f', rotationYears: 5, sun: 'full', spacingInches: 24, plantWindow7b: 'Plant canes late winter/early spring; perennial.' },
+  { key: 'blackberry', name: 'Blackberry', family: 'rosaceae', familyLabel: 'Rose family (Rosaceae)', category: 'fruit', color: '#4f3f5f', rotationYears: 5, sun: 'full', spacingInches: 36, plantWindow7b: 'Plant canes late winter/early spring; perennial.' },
+  { key: 'grape',      name: 'Grape',      family: 'vitaceae', familyLabel: 'Grape family (Vitaceae)', category: 'fruit', color: '#7d5ba6', rotationYears: 8, sun: 'full', spacingInches: 72, plantWindow7b: 'Plant dormant vines late winter; needs a trellis.' },
+  { key: 'fig',        name: 'Fig',        family: 'moraceae', familyLabel: 'Mulberry family (Moraceae)', category: 'fruit', color: '#7f8f5f', rotationYears: 8, sun: 'full', spacingInches: 96, plantWindow7b: 'Plant spring; hardy in 7b with some protection.' },
+
+  // --- Companion flowers ---
+  { key: 'nasturtium', name: 'Nasturtium', family: 'tropaeolaceae', familyLabel: 'Nasturtium family (Tropaeolaceae)', category: 'flower', color: '#e0703f', rotationYears: 1, sun: 'full', spacingInches: 10, plantWindow7b: 'Direct sow after last frost; edible, traps aphids.' },
+  { key: 'borage',     name: 'Borage',     family: 'boraginaceae', familyLabel: 'Borage family (Boraginaceae)', category: 'flower', color: '#5f7fc9', rotationYears: 1, sun: 'full', spacingInches: 18, plantWindow7b: 'Direct sow after last frost; bee magnet, self-seeds.' },
+  { key: 'calendula',  name: 'Calendula',  family: 'asteraceae', familyLabel: 'Aster family (Asteraceae)', category: 'flower', color: '#f0a53f', rotationYears: 1, sun: 'full', spacingInches: 10, plantWindow7b: 'Direct sow early spring; edible, pest-deterrent.' },
+  { key: 'zinnia',     name: 'Zinnia',     family: 'asteraceae', familyLabel: 'Aster family (Asteraceae)', category: 'flower', color: '#e0507f', rotationYears: 1, sun: 'full', spacingInches: 10, plantWindow7b: 'Direct sow after last frost; draws pollinators.' },
+  { key: 'cosmos',     name: 'Cosmos',     family: 'asteraceae', familyLabel: 'Aster family (Asteraceae)', category: 'flower', color: '#e07fa0', rotationYears: 1, sun: 'full', spacingInches: 12, plantWindow7b: 'Direct sow after last frost; attracts beneficials.' }
 ];

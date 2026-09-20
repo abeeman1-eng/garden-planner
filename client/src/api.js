@@ -23,6 +23,10 @@ export const api = {
   // Garden + grid
   getGarden: () => request('/api/garden'),
   updateGarden: (rows, cols) => json('PUT', '/api/garden', { rows, cols }),
+  setZone: (zone) => json('PUT', '/api/garden/zone', { zone }),
+
+  // Hardiness zone lookup by ZIP
+  lookupZone: (zip) => request(`/api/zone/${encodeURIComponent(zip)}`),
 
   // Cells
   getCell: (row, col) => request(`/api/cells/${row}/${col}`),

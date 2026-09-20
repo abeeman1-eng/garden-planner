@@ -58,5 +58,25 @@ export const COMPANION_RULES = [
   { a: { plant: 'lettuce' },  b: { family: 'fabaceae' }, relationship: 'good',
     reason: 'Beans/peas fix nitrogen that leafy lettuce appreciates.' },
   { a: { plant: 'strawberry' }, b: { family: 'fabaceae' }, relationship: 'good',
-    reason: 'Beans fix nitrogen and are traditional strawberry companions.' }
+    reason: 'Beans fix nitrogen and are traditional strawberry companions.' },
+
+  // ---- New-crop rules ----
+  { a: { plant: 'nasturtium' }, b: { family: 'cucurbitaceae' }, relationship: 'good',
+    reason: 'Nasturtiums trap aphids and deter squash bugs and cucumber beetles.' },
+  { a: { plant: 'nasturtium' }, b: { plant: 'tomato' }, relationship: 'good',
+    reason: 'Nasturtiums lure aphids away from tomatoes.' },
+  { a: { plant: 'borage' }, b: { plant: 'tomato' }, relationship: 'good',
+    reason: 'Borage deters tomato hornworms and attracts pollinators.' },
+  { a: { plant: 'borage' }, b: { plant: 'strawberry' }, relationship: 'good',
+    reason: 'Borage is a classic strawberry companion that boosts pollination.' },
+  { a: { plant: 'calendula' }, b: { plant: 'tomato' }, relationship: 'good',
+    reason: 'Calendula traps aphids and draws in beneficial insects.' },
+  { a: { plant: 'cilantro' }, b: { family: 'brassicaceae' }, relationship: 'good',
+    reason: 'Cilantro flowers attract wasps that prey on cabbage pests.' },
+  { a: { plant: 'fennel' }, b: { family: 'fabaceae' }, relationship: 'bad',
+    reason: 'Fennel is allelopathic and inhibits beans and peas — keep it isolated.' },
+  { a: { plant: 'fennel' }, b: { family: 'cucurbitaceae' }, relationship: 'bad',
+    reason: 'Fennel inhibits the growth of most vegetables, including cucurbits.' },
+  { a: { plant: 'dill' }, b: { plant: 'cucumber' }, relationship: 'good',
+    reason: 'Dill attracts beneficial insects and is said to improve cucumber flavor.' }
 ];

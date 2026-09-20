@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { existsSync } from 'node:fs';
 
-import { initSchema, get, run } from './db.js';
+import { initSchema } from './db.js';
 import { seed } from './seed.js';
 import plantsRouter from './routes/plants.js';
 import gardenRouter from './routes/garden.js';
@@ -15,6 +15,7 @@ import plantingsRouter from './routes/plantings.js';
 import harvestsRouter from './routes/harvests.js';
 import inventoryRouter from './routes/inventory.js';
 import checkRouter from './routes/check.js';
+import zoneRouter from './routes/zone.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PORT = process.env.PORT || 3001;
@@ -22,17 +23,11 @@ const PORT = process.env.PORT || 3001;
 async function start() {
   await initSchema();
 
-  // Auto-seed reference data on first startup (the cloud DB starts empty).
-  const plantCount = (await get('SELECT COUNT(*) AS n FROM plants')).n;
-  if (plantCount === 0) {
-    const { plants, rules } = await seed();
-    console.log(`Seeded reference data: ${plants} plants, ${rules} companion rules.`);
-  }
-
-  // Ensure the single garden record exists even if seeding was skipped.
-  if (!(await get('SELECT id FROM garden WHERE id = 1'))) {
-    await run('INSERT INTO garden (id, rows, cols, zone) VALUES (1, 10, 20, ?)', ['7b']);
-  }
+  // Apply curated reference data on every startup. seed() upserts plants and
+  // rebuilds companion rules (idempotent) and never touches user data, so new
+  // crops/rules ship automatically on deploy while the garden is preserved.
+  const { plants, rules } = await seed();
+  console.log(`Reference data ready: ${plants} plants, ${rules} companion rules.`);
 
   const app = express();
   app.use(express.json({ limit: '2mb' }));
@@ -44,6 +39,7 @@ async function start() {
   app.use('/api/harvests', harvestsRouter);
   app.use('/api/inventory', inventoryRouter);
   app.use('/api/check', checkRouter);
+  app.use('/api/zone', zoneRouter);
   app.get('/api/health', (_req, res) => res.json({ ok: true, zone: '7b' }));
 
   // Serve the built client in production (npm run build -> client/dist).
